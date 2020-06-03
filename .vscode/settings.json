@@ -5,7 +5,8 @@
     "python.formatting.provider": "none",
     "python.formatting.autopep8Path": "",
     "python.linting.pylintArgs": [
-        "pylint"
+        "pylint",
+        "--enable=F,E,W"
     ],
     "python.linting.pylintCategorySeverity.refactor": "Warning"
 }
