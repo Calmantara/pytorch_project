@@ -1,0 +1,11 @@
+{
+    "python.pythonPath": "d:\\training_code\\computer_vision\\pytorch\\cv\\Scripts\\python.exe",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "none",
+    "python.formatting.autopep8Path": "",
+    "python.linting.pylintArgs": [
+        "pylint"
+    ],
+    "python.linting.pylintCategorySeverity.refactor": "Warning"
+}
