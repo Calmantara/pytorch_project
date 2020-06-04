@@ -2,19 +2,27 @@ import torch
 import torch.nn as nn
 
 class LR(nn.Module):
-    def __init__ (self, input_size: int, output_size: int):
+    def __init__ (self, input_size: int, output_size: int) -> None:
         super().__init__()
+        self._input_size = input_size
         self._linear = nn.Linear(input_size, output_size)
 
-    def forward(self, x):
+    def forward(self, x) -> list:
         predic = self._linear(x)
         return predic
     
-    def get_param(self):
+    def predic(self, x, y):
+        _error = y - self.forward(x)
+        return self.forward(x), "accuracy :" + str(torch.mean(_error).item())
+
+    def get_param(self) -> (list, float):
         [w, b] = self._linear.parameters()
-        return w[0][0].item(), b[0].item()
+        w0 = []
+        for i in w.view(self._input_size):
+            w0.append(i.item())
+        return w0, b.item()
     
-    def plot_model(self, plt, np, x, y):
+    def plot_model(self, plt, np, x, y) -> None:
         w1, b1 = self.get_param()
         x1 = np.array([0, 10])
         y1 = w1 * x1 + b1
@@ -22,7 +30,7 @@ class LR(nn.Module):
         plt.scatter(x, y)
         plt.show()
 
-    def train(self, learning_rate:float, epochs:int, x, y):
+    def train(self, learning_rate:float, epochs:int, x, y) -> None:
         epochs = epochs
         # losses = [] 
 
